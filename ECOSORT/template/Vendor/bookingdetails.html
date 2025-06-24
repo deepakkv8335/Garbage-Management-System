@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ECOSORT</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assetsv2/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assetsv2/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assetsv2/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assetsv2/vendor/quill/quill.snow.css' %}" rel="stylesheet">
+  <link href="{% static 'assetsv2/vendor/quill/quill.bubble.css' %}" rel="stylesheet">
+  <link href="{% static 'assetsv2/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assetsv2/vendor/simple-datatables/style.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assetsv2/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="{% url 'vendordashboard' %}" class="logo d-flex align-items-center">
+        <img src="{% static 'assetsv2/img/logo.png' %}" alt="">
+        <span class="d-none d-lg-block">ECOSORT</span>
+      </a>
+      <!-- <i class="bi bi-list toggle-sidebar-btn"></i> -->
+    </div><!-- End Logo -->
+    
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <!-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
+            <h7>{{ User.username }}&nbsp;&nbsp;&nbsp;&nbsp;</h7>
+          </a><!-- End Profile Iamge Icon -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'vendordashboard' %}">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'vendorprofile' %}">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'Logout' %}">
+          <i class="bi bi-box-arrow-left"></i>
+          <span>Logout</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <!-- <div class="pagetitle">
+      <h1>Contact</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Orders</li>
+          <li class="breadcrumb-item active">Details</li>
+        </ol>
+      </nav>
+    </div>End Page Title -->
+
+    <section class="section contact">
+
+      <div class="row gy-4">
+
+        <div class="col-xl-6">
+
+          <div class="row">
+            <div class="col-lg-15">
+              <div class="info-box card">
+                <i class="bi bi-three-dots"></i>
+                <i><img src={{bookings.package_id.img1.url}} width="400px" alt=""></i>
+                <h3>Reserved by - {{ bookings.user_id.username }}</h3>
+                <h3>Name : {{ bookings.name }}</h3>
+                <h6>Pickup Date : {{ bookings.booking_date }}</h6>
+                <h6>Phone Number : {{ bookings.phone }}</h6>
+                <h6>Address : {{ bookings.address }}</h6>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assetsv2/vendor/apexcharts/apexcharts.min.js' %}"></script>
+  <script src="{% static 'assetsv2/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assetsv2/vendor/chart.js/chart.umd.js' %}"></script>
+  <script src="{% static 'assetsv2/vendor/echarts/echarts.min.js' %}"></script>
+  <script src="{% static 'assetsv2/vendor/quill/quill.js' %}"></script>
+  <script src="{% static 'assetsv2/vendor/simple-datatables/simple-datatables.js' %}"></script>
+  <script src="{% static 'assetsv2/vendor/tinymce/tinymce.min.js' %}"></script>
+  <script src="{% static 'assetsv2/vendor/php-email-form/validate.js' %}"></script>
+  
+  <!-- Template Main JS File -->
+  <script src="{% static 'assetsv2/js/main.js' %}"></script>
+  
+  
+
+</body>
+
+</html>

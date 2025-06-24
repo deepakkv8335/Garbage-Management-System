@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ECOSORT</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assetsv2/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assetsv2/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assetsv2/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assetsv2/vendor/quill/quill.snow.css' %}" rel="stylesheet">
+  <link href="{% static 'assetsv2/vendor/quill/quill.bubble.css' %}" rel="stylesheet">
+  <link href="{% static 'assetsv2/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assetsv2/vendor/simple-datatables/style.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assetsv2/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="{% url 'vendordashboard' %}" class="logo d-flex align-items-center">
+        <img src="{% static 'assetsv2/img/logo.png' %}" alt="">
+        <span class="d-none d-lg-block">ECOSORT</span>
+      </a>
+      <!-- <i class="bi bi-list toggle-sidebar-btn"></i> -->
+    </div><!-- End Logo -->
+    
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <!-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
+            <h7>{{ User.username }}&nbsp;&nbsp;&nbsp;&nbsp;</h7>
+          </a><!-- End Profile Iamge Icon -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'vendordashboard' %}">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'vendorprofile' %}">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'Logout' %}">
+          <i class="bi bi-box-arrow-left"></i>
+          <span>Logout</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+          <div class="row">
+
+            <!-- Sales Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card sales-card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Approved <span>| Overall</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-exclamation-square"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>00{{approved_bookings_count}}</h6>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Sales Card -->
+
+            <!-- Sales Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card sales-card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Picked <span>| Overall</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-check-square"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>00{{ picked_bookings_count }}</h6>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Sales Card -->
+
+            <!-- Sales Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card sales-card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Reject <span>| Overall</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-x-square"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6>00{{reject_bookings_count}}</h6>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Sales Card -->
+
+            <!-- Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+
+                <div class="card-body">
+                  <h5 class="card-title">Recent Requests <span>| Bookings</span></h5>
+
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Manage</th>
+                        <th scope="col">Details</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for booking in bookings %}
+                      <tr>
+                        <td scope="row">{{ booking.name }}</td>
+                        <td scope="row">{{ booking.user_id.username }}</td>
+                        <!-- <td>{{ booking.package_id.package_name }}</td>
+                        <td>{{ booking.total_amount }}</td> -->
+                        <td>
+                          {% if booking.status == "pending" %}
+                          <span class="badge bg-secondary">{{ booking.status }}</span>
+                          {% endif %}
+
+                          {% if booking.status == "waiting" %}
+                          <span class="badge bg-primary">{{ booking.status }}</span>
+                          {% endif %}
+
+                          {% if booking.status == "approved" %}
+                          <span class="badge bg-warning">{{ booking.status }}</span>
+                          {% endif %}
+
+                          {% if booking.status == "picked" %}
+                          <span class="badge bg-success">{{ booking.status }}</span>
+                          {% endif %}
+
+                          {% if booking.status == "reject" %}
+                          <span class="badge bg-danger">{{ booking.status }}</span>
+                          {% endif %}
+                        </td>
+                        <td>
+                          <form method="post" action="{% url 'edit_bookingstatus' id=booking.id %}">
+                            {% csrf_token %}
+                            {% if booking.status == "pending" %}
+                            <input type="hidden" name="status" >
+                            <button title="accept" type="submit" name="status" value="approve" >
+                              <i class="bi bi-check-square"></i></button>
+                            <button title="reject" type="submit" name="status" value="reject" >
+                              <i class="bi bi-dash-square"></i></button>
+                            {% endif %}
+                            
+                            {% if booking.status == "approved" %}
+                            <!-- <button class="btn btn-primary">Approved</button> -->
+                            <button title="picked" type="submit" name="status" value="picked" >
+                              <i>PICKED</i></button>
+                            {% endif %}
+                          </form>
+                        </td>
+                        <td>
+                          <span class="badge badge-danger">
+                          {% if booking.status%}
+                        <a href="{% url 'bookingdetails' id=booking.id %}">View</a>
+                      {% endif %}
+                          </span>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div><!-- End Recent Sales -->
+
+          </div>
+        </div><!-- End Left side columns -->
+
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+
+          <!-- Website Traffic -->
+          <div class="card">
+
+            <div class="card-body pb-0">
+              <h5 class="card-title">ECOSORT <span>| Bookings</span></h5>
+
+              <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  echarts.init(document.querySelector("#trafficChart")).setOption({
+                    tooltip: {
+                      trigger: 'item'
+                    },
+                    legend: {
+                      top: '5%',
+                      left: 'center'
+                    },
+                    series: [{
+                      type: 'pie',
+                      radius: ['40%', '70%'],
+                      avoidLabelOverlap: false,
+                      label: {
+                        show: false,
+                        position: 'center'
+                      },
+                      emphasis: {
+                        label: {
+                          show: true,
+                          fontSize: '18',
+                          fontWeight: 'bold'
+                        }
+                      },
+                      labelLine: {
+                        show: false
+                      },
+                      data: [{
+                          value: '{{ waiting_bookings_count }}',
+                          name: 'Waiting'
+                        },
+                        {
+                          value: '{{ picked_bookings_count }}',
+                          name: 'Picked'
+                        },
+                        {
+                          value: '{{ approved_bookings_count }}',
+                          name: 'Approved'
+                        },
+                        {
+                          value: '{{ reject_bookings_count }}',
+                          name: 'Rejected'
+                        },
+                        {
+                          value: '{{ pending_bookings_count }}',
+                          name: 'Pending'
+                        }
+                      ]
+                    }]
+                  });
+                });
+              </script>
+
+            </div>
+          </div><!-- End Website Traffic -->
+
+          <!-- News & Updates Traffic -->
+          <!-- <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body pb-0">
+              <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
+
+              <div class="news">
+                <div class="post-item clearfix">
+                  <img src="{% static 'assetsv2/img/news-1.jpg' %}" alt="">
+                  <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
+                  <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="{% static 'assetsv2/img/news-2.jpg' %}" alt="">
+                  <h4><a href="#">Quidem autem et impedit</a></h4>
+                  <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="{% static 'assetsv2/img/news-3.jpg' %}" alt="">
+                  <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
+                  <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="{% static 'assetsv2/img/news-4.jpg' %}" alt="">
+                  <h4><a href="#">Laborum corporis quo dara net para</a></h4>
+                  <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
+                </div>
+
+                <div class="post-item clearfix">
+                  <img src="{% static 'assetsv2/img/news-5.jpg' %}" alt="">
+                  <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
+                  <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
+                </div>
+
+              </div>
+            </div>
+          </div> -->
+          <!-- End News & Updates -->
+
+        </div><!-- End Right side columns -->
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assetsv2/vendor/apexcharts/apexcharts.min.js' %}"></script>
+  <script src="{% static 'assetsv2/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assetsv2/vendor/chart.js/chart.umd.js' %}"></script>
+  <script src="{% static 'assetsv2/vendor/echarts/echarts.min.js' %}"></script>
+  <script src="{% static 'assetsv2/vendor/quill/quill.js' %}"></script>
+  <script src="{% static 'assetsv2/vendor/simple-datatables/simple-datatables.js' %}"></script>
+  <script src="{% static 'assetsv2/vendor/tinymce/tinymce.min.js' %}"></script>
+  <script src="{% static 'assetsv2/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assetsv2/js/main.js' %}"></script>
+
+
+</body>
+
+</html>

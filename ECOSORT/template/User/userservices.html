@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>ECOSORT</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'css/style-starter.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main_styles.css' %}">
+    <link href="//fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script> <!-- Common jquery plugin -->
+<!--bootstrap working-->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+<!-- c -->
+
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<!-- V CSS Files -->
+<link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+<link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+<link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+<!-- M CSS File -->
+<link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="{% url 'userhome' %}" class="logo d-flex align-items-center me-auto">
+        <img src="{% static 'assetsv2/img/logo.png' %}" alt="">
+        <h1 class="sitename">ECOSORT</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+        <li><a href="{% url 'userhome' %}">Home<br></a></li>
+        <li><a href="{% url 'userservices' %}" class="active">Services</a></li>
+        <li><a href="{% url 'userviewbookings' %}">Bookings</a></li>
+        <li><a href="{% url 'userhome' %}#about">About</a></li>
+        <li></li>
+      </ul>
+      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-dark stroke">
+      <div class="dropdown">
+        <button class="btn  dropdown-item-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img class="" width="30px" src="../../static/images/prof.png" alt="Profile image"> </a>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-header text-center">
+            <p class="mb-1 mt-3 font-weight-semibold">{{ User.username }}</p>
+            <p class="font-weight-light text-muted mb-0">{{ User.email }}</p>
+          </div>
+          <a class="dropdown-item" href="{% url 'userprofile' %}">Profile<span class="badge badge-pill badge-danger"></span>
+            <i class="dropdown-item-icon ti-dashboard"></i></a>
+          <a href="{% url 'Logout' %}" class="dropdown-item">Logout<i class="dropdown-item-icon ti-power-off"></i></a>
+        </div>
+      </div>
+    </nav>
+
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- Values Section -->
+  <br><br><br><br><br><br>
+  <section id="values" class="values section">
+
+    <div class="container">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <a href="#pricing">
+          <div class="card">
+            <img src="{% static 'assets/img/services-3.png' %}" class="img-fluid" alt="">
+            <h3>Event Waste Management</h3>
+            <p>Event waste management involves sorting, recycling, and disposing of waste to ensure sustainability</p>
+          </div>
+          </a>
+        </div><!-- End Card Item -->
+
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <a href="#pricing">
+          <div class="card">
+            <img src="{% static 'assets/img/services-2.png' %}" class="img-fluid" alt="">
+            <h3>Shop Waste Management</h3>
+            <p>Shop waste management focuses on reducing, recycling, and properly disposing of waste in the retail spaces</p>
+          </div></a>
+        </div><!-- End Card Item -->
+
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <a href="#pricing">
+          <div class="card">
+            <img src="{% static 'assets/img/services-1.png' %}" class="img-fluid" alt="">
+            <h3>Home Waste Management</h3>
+            <p>Home waste management involves sorting, recycling, and disposing of waste responsibly to reduce environmental impact</p>
+          </div>
+          </a>
+        </div><!-- End Card Item -->
+
+      </div>
+
+    </div>
+
+  </section><!-- /Values Section -->
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="pricing section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>Pricing</h2>
+    </div>
+    <!-- End Section Title -->
+
+    <div class="container">
+
+      <div class="row gy-4">
+
+        {% for package in packages %}
+        <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+          <div class="pricing-tem">
+            <h3 style="color: #1058e9;"><a href="{% url 'servicebooking' id=package.id %}">{{ package.package_name }}</a></h3>
+            <div class="price"><sup>₹</sup>₹{{ package.price }}<span></span></div>
+            <div class="icon">
+              <i class="bi bi-{{package.destination}}" style="color: #1058e9;"></i>
+            </div>
+            <ul>
+              <li>{{ package.description}}</li>
+              <li class="na"></li>
+            </ul>
+            <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <a href="{% url 'servicebooking' id=package.id %}" class="icon text-center">&nbsp;&nbsp;<span style="color: whitesmoke;">Book Now</span>&nbsp;&nbsp;</a>
+            </button>
+          </div>
+        </div>
+        {% endfor %}
+
+        <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+          <div class="pricing-tem">
+            <h3 style="color: #837c7b;">Hospital Waste</h3>
+            <div style="color: #837c7b;" class="price"><sup>₹</sup>1999<span></span></div>
+            <div class="icon">
+              <i class="bi bi-buildings" style="color: #837c7b;"></i>
+            </div>
+            <ul>
+              <li>This feature will be made<br>available soon</li>
+              <li></li>
+            </ul>
+            <a style="color: #837c7b;" class="btn">Unavailable</a>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section><!-- /Pricing Section -->
+
+</main>
+
+<footer id="footer" class="footer">
+
+  
+
+  <div class="container footer-top">
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6 footer-about">
+        <a href="{% url 'userhome' %}" class="d-flex align-items-center">
+          <span class="sitename">ECOSORT</span>
+        </a>
+        <div class="footer-contact pt-3">
+          <p>B118 East Avenue</p>
+          <p>Pulpally, IN 673579</p>
+          <p class="mt-3"><strong>Phone:</strong> <span>+91 0000 0000 11</span></p>
+          <p><strong>Email:</strong> <span>ecosort2025@gmail.com</span></p>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h4>Useful Links</h4>
+        <ul>
+          <li><i class="bi bi-chevron-right"></i> <a href="{% url 'userhome' %}#hero">Home</a></li>
+          <li><i class="bi bi-chevron-right"></i> <a href="{% url 'userhome' %}#features">Features</a></li>
+          <li><i class="bi bi-chevron-right"></i> <a href="{% url 'userhome' %}#about">About Us</a></li>
+          <li><i class="bi bi-chevron-right"></i> <a href="{% url 'userhome' %}#contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><i class="bi bi-chevron-right"></i> <a href="#pricing">Payments</a></li>
+          <li><i class="bi bi-chevron-right"></i> <a href="#values">Offerings</a></li>
+          <li><i class="bi bi-chevron-right"></i> <a href="{% url 'userviewbookings' %}">Bookings</a></li>
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="container copyright text-center mt-4">
+    <p>© <span>Copyright</span> <strong class="px-1 sitename">ECOSORT</strong> <span>All Rights Reserved</span></p>
+    <div class="credits">
+    </div>
+  </div>
+
+</footer>
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- V JS Files -->
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+<script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+<script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+<script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+<!-- M JS File -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
+
+<!-- c -->

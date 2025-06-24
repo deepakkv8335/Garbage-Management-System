@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>ECOSORT</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'css/style-starter.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main_styles.css' %}">
+    <link href="//fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script> <!-- Common jquery plugin -->
+<!--bootstrap working-->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+<!-- c -->
+
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<!-- V CSS Files -->
+<link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+<link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+<link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+<!-- M CSS File -->
+<link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="{% url 'userhome' %}" class="logo d-flex align-items-center me-auto">
+        <img src="{% static 'assetsv2/img/logo.png' %}" alt="">
+        <h1 class="sitename">ECOSORT</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+        <li><a href="{% url 'userhome' %}">Home<br></a></li>
+        <li><a href="{% url 'userservices' %}">Services</a></li>
+        <li><a href="{% url 'userviewbookings' %}" class="active">Bookings</a></li>
+        <li><a href="{% url 'userhome' %}#about">About</a></li>
+        <li></li>
+      </ul>
+      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-dark stroke">
+      <div class="dropdown">
+        <button class="btn  dropdown-item-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img class="" width="30px" src="../../static/images/prof.png" alt="Profile image"> </a>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-header text-center">
+            <p class="mb-1 mt-3 font-weight-semibold">{{ User.username }}</p>
+            <p class="font-weight-light text-muted mb-0">{{ User.email }}</p>
+          </div>
+          <a class="dropdown-item" href="{% url 'userprofile' %}">Profile<span class="badge badge-pill badge-danger"></span>
+            <i class="dropdown-item-icon ti-dashboard"></i></a>
+          <a href="{% url 'Logout' %}" class="dropdown-item">Logout<i class="dropdown-item-icon ti-power-off"></i></a>
+        </div>
+      </div>
+    </nav>
+
+  </div>
+</header>
+
+<main class="main">
+
+<br><br><br><br><br><br>
+
+<!-- Pricing Section -->
+<section id="pricing" class="pricing section">
+
+  <div class="container">
+
+    <div class="row gy-4">
+
+      {% for booking in bookings_data %}
+      <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+        <div class="pricing-tem">
+          <h3 style="color: #1058e9;">{{ booking.package_id.package_name }}</h3>
+          <br>
+          <div class="price"><sup>₹</sup>{{ booking.total_amount }}<span></span></div>
+          <div class="icon">
+            <i class="bi bi-" style="color: #1058e9;"></i>
+          </div>
+          <ul>
+          {% if booking.status == 'pending' %}
+          <li style="font-weight: bold; color: rgb(110, 110, 110);">{{ booking.status }}
+          </li>
+          {% elif booking.status == 'waiting' %}
+          <li style="font-weight: bold; color: rgb(0, 0, 164);">{{ booking.status }}
+          </li>
+          {% elif booking.status == 'approved' %}
+          <li style="font-weight: bold; color: rgb(157, 102, 0);">{{ booking.status }}
+          </li>
+          {% elif booking.status == 'reject' %}
+          <li style="font-weight: bold; color: rgb(170, 0, 0);">{{ booking.status }}
+          </li>
+          {% elif booking.status == 'picked' %}
+          <li style="font-weight: bold; color: rgb(1, 105, 1);">{{ booking.status }}
+          </li>
+          {% endif %}
+          </ul>
+          <ul>
+            <li>{{ booking.booking_date }}</li>
+            <li class="na"></li>
+          </ul>
+          
+              {% if booking.status in "pending" %}
+              <a href="{% url 'payments' id=booking.id %}">
+              <button type="button" class="btn btn-primary" data-bs-target="#staticBackdrop">
+                &nbsp;&nbsp;<span style="color: whitesmoke;">Pay Now</span>&nbsp;&nbsp;
+              </button>
+              </a>
+    
+              {% else %}
+             
+              {% endif %}
+    
+          </ul>
+        </div>
+      </div>
+
+      {% endfor %}
+
+
+    </div>
+
+  </div>
+
+</section><!-- Pricing Section -->
+
+        
+</main>
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- V JS Files -->
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+<script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+<script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+<script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+<!-- M JS File -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+crossorigin="anonymous"></script>
+
+<!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
+<!-- c -->
